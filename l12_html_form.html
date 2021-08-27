@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <main>
+      <h1>html 제출양식 form</h1>
+      <p>html 양식은 사용자 입력을 수정하기 위해 사용된다. 예)설문조사, 회원가입, 로그인,...</p>
+      <p>양식(form)에 입력한 복수의 데이터(파라미터)는 처리를 위해 서버로 전송(post방식)된다.</p>
+      <article>
+        <h2>form 태그</h2>
+        <p>form 요소는 사용자 입력을 위한 html 양식을 만드는데 사용되며 입력양식을 1개 이상 포함하는 컨테이너다.
+          <br>이때 입력 양식에는 text field, checkboxs, radio, submit... 등이 있다.
+          <br>form과 입력요소는 모두 name을 가지고 이 name은 파라미터 이름으로 서버에 전송된다.
+          <br>예)url? name=value & name2=value2
+          <br>document.forms["formName"]["inputName"]로 element를 참조할 수 있기 때문에
+          <br>formName은 아이디처럼 유일한 값이다. (<=> document.forms.formName.inputName.value)
+        </p>
+        <h3>form 태그 속성</h3>
+        <ul>
+          <li>action : 양식을 제출하는 url위치</li>
+          <li>method : 양식 데이터를 보낼 때 통신(HTTP)할 방법</li>
+          <ul>
+            <li>method='GET'(default) : url에 파라미터를 이름/값 쌍을 추가하는 방법으로 파라미터가 안전하지 않다.(url이 드러남..)
+            예) url?name=value&name=value(안전하지 않다.)</li>
+            <li>method='POST' : 양식 파라미터를 서버에 보낼때 HTTP포스트 트랜잭션에 추가해서 보낸다.(파라미터가 안전하다)</li>
+          </ul>
+          <li>name : html 문서에서 유일한 이름이어야 한다.</li>
+          <li>autocomplete : 입력 양식의 자동완성(autocomplete="on 또는 off")</li>
+          <li>novalidate : 양식 제출 시 유효성 검사를 하지 않도록 지정</li>
+          <li>target : 양식 제출 시 받은 응답을 표시할 창의 위치(양식을 서버에 제출하면 양식을 처리후 이동할 페이지를 반환)
+            <br> 예)양식을 서버에 제출하면 처리한 상태에 따라 이동할(응답) 페이지가 다르다. ()로그인 실패->로그인, 로그인 성공->홈)
+            <ul>
+              <li>_self(default) : 동일한 프레임(창)에 표시</li>
+              <li>_blank : 새창이나 프레임에 표시</li>
+              <li>_parent : 상위 프레임에 표시</li>
+              <li>_top : 창 전체에 표시</li>
+            </ul>
+          </li>
+          <li>enctype : 양식 데이터를 서버에 제출할 때 인코딩 방식을 지정(GET-url 인코딩이 고정, POST만 변경 가능)</li>
+        </ul>
+      </article>
+      <article>
+        <h2>입력 양식 요소</h2>
+        <p>input은 입력양식 요소의 대표이며 여러 타입의 값을 전달할 수 있다.
+        <br>모든 입력 양식 요소는 name과 value를 가지며 양식을 제출(submit)할 때 url 또는 포스트트렌잭션에 추가된다.
+        </p>
+        <ul>
+          <li>input : 다양한 입력 타입이 존재하는 입력요소 <input type="datetime-local" name="" value=""></li>
+          <li>textarea : 여러줄의 텍스트 영역 제공 <textarea name="name" rows="2" cols="80">hi</textarea></li>
+          <li>select : 드롭다운방식(optgroup:목록을 그룹으로 묶는 것)으로 목록을 정리가능
+            <select class="" name="">
+              <optgroup label="frontend">
+                <option value="html">html</option>
+                <option value="css">css</option>
+                <option value="js">js</option>
+              </optgroup>
+              <optgroup label="backend">
+                <option value="java">JAVA</option>
+                <option value="c">C</option>
+                <option value="c#">C#</option>
+              </optgroup>
+          </select>
+        </li>
+        <li>datalist : 입력하기 전에 미리 정의된 옵션 목록을 지정
+          <input list="program">
+          <datalist id="program">
+            <option value="java">JAVA</option>
+            <option value="c">C</option>
+            <option value="c#">C#</option>
+          </datalist>
+        </li>
+        <li>button : 클릭이 가능한 버튼
+          <button type="button" name="button">버튼</button></li>
+          <li>label : 입력요소에 라벨을 정의(입력요소.id==label.for 또는 label>입력요소)
+            <label for="testCheck">test: </label> <input type="checkbox" name="text" value="0" id="testCheck">
+      또는  <label>test2:<input type="checkbox" name="text2" value="1"> </label>
+          </li>
+        </ul>
+      </article>
+      <article>
+        <h2>input태그가 가지는 여러 타입의 입력요소</h2>
+        <ul>
+          <li>type="text" : 한줄 텍스트를 정의 <input type="text" name="" value=""></li>
+          <li>type="search" : 검색 문자열을 입력하기 위한 필드 <input type="search" name="" value=""></li>
+          <li>type="email" : 이메일을 입력하는 필드(제출시 자동 유효성검사)
+            <form ><input type="email" name="" value=""> <input type="submit" name="" value="제출"></form></li>
+          <li>type="url" : url을 입력하는 필드(제출시 자동 유효성검사)
+            <form>
+              <input type="url" name="" value="">
+              <input type="submit" name="" value="제출">
+            </form>
+          </li>
+          <li>type="password" : 입력한 문자를 암호화시킨다.
+            <input type="password" name="" value="">
+          </li>
+          <li>type="number" : 숫자를 입력하는 필드
+            <input type="number" name="" value="" step="2">
+          </li>
+          <li>type="button" : 클릭이 가능한 버튼(동작에 대하여서는 자바스크립트로 정의)</li>
+          <li>type="submit" : action에 정의된 페이지(서버)로 양식을 제출</li>
+          <li>type="reset" : value를 재설정 하는 버튼 (reset()실행)</li>
+          <li>type="range" : 범위를 제어하는 컨트롤 ui 제공
+            <input type="range" name="" value="" max="100" min="10" step="10"></li>
+          <li>type="checkbox" : 선택한 파라미터만 전달 (체크 한것에 한해 전달하는 것일 뿐)
+            <label><input type="checkbox" name="checkTest1" value="para1">체크박스1</label>
+            <label><input type="checkbox" name="checkTest2" value="para1">체크박스2</label>
+            <label><input type="checkbox" name="checkTest3" value="para1">체크박스3</label>
+          </li>
+          <li>type="radio" : 같은 이름의 파라미터가 복수의 value 중 하나만 선택해서 전달
+            <label><input type="radio" name="radioTest" value="1">라디오1</label>
+            <label><input type="radio" name="radioTest" value="2">라디오2</label>
+            <label><input type="radio" name="radioTest" value="3">라디오3</label>
+
+          </li>
+          <li>type="color" : 색상 선택기
+            <input type="color" name="" value="">
+          </li>
+          <li>type="datetime-local" : 데이트픽커 UI제공 value="2021-08-21 T17:58"
+            <input type="datetime-local" name="" value="">
+          </li>
+          <li>type="date" : value="2021-08-21"</li>
+          <li>type="month" : value="2021-08"</li>
+          <li>type="week" : value="2021-w34"</li>
+          <li>type="time" : value="17:58"</li>
+          <li>type="file" : 파일 업로드(탐색기 제공)
+            <input type="file" name="" value="">
+          </li>
+          <li>type="hidden" : 숨겨진 파라미터</li>
+        </ul>
+      </article>
+      <article>
+        <h2>form양식 선택자 TEST</h2>
+        <p>table 리스트에서 수정 버튼을 누르면 해당 회원의 정보를 회원수정form에 가져오기</p>
+        <form name="memberInsert" action="" method="post">
+          <fieldset>
+            <label>회원 수정form</label>
+            <p>num : <input type="text" name="num" value=""></p>
+            <p>id : <input type="text" name="id" value=""></p>
+            <p>tel : <input type="text" name="tel" value=""></p>
+            <p>grade : <input type="number" name="grade" value=""></p>
+            <p>gender :
+              <label>female: <input type="radio" name="gender" value="f"></label>
+              <label>male: <input type="radio" name="gender" value="m"></label></p>
+            <p>실적 : <input type="text" name="score" value=""></p>
+            <p>
+              <input type="reset" name="" value="재설정">
+              <input type="button" name="" value="회원수정">
+            </p>
+
+          </fieldset>
+        </form>
+
+        <h3>회원 리스트</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>num</th><th>id</th><th>tel</th><th>grade(0~5)</th><th>gender(m, f)</th><th>실적(0~100)</th><th>수정</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- (tr>(td{$$}+td{id_}+td{010-}+td{0}+td{f}+td{50}+td))*5 -->
+            <tr>
+              <td>01</td>
+              <td>id_aaaa</td>
+              <td>010-1111-1111</td>
+              <td>1</td>
+              <td>f</td>
+              <td>11</td>
+              <td>
+                <form name="id_aaaa_form" method="post">
+                  <input type="hidden" name="num" value="01">
+                  <input type="hidden" name="id" value="id_aaaa">
+                  <input type="hidden" name="tel" value="010-1111-1111">
+                  <input type="hidden" name="grade" value="0">
+                  <input type="hidden" name="gender" value="f">
+                  <input type="hidden" name="score" value="11">
+
+                <!-- <button type="button" name="button" onclick=" console.log(this.form.tel.value)">수정</button></td> -->
+                <button type="button" name="button" onclick=" insertForm2(this.form)">수정</button></td>
+              </form>
+
+<script>
+  function insertForm2(xxxxx){
+    var that1=xxxxx.num.value;
+    var that2=xxxxx.id.value;
+    var that3=xxxxx.tel.value;
+    var that4=xxxxx.grade.value;
+    var that5=xxxxx.gender.value;
+    var that6=xxxxx.score.value;
+
+
+    document.forms.memberInsert.num.value=that1;
+    document.forms.memberInsert.id.value=that2;
+    document.forms.memberInsert.tel.value=that3;
+    document.forms.memberInsert.grade.value=that4;
+    document.forms.memberInsert.gender.value=that5;
+    document.forms.memberInsert.score.value=that6;
+  }
+
+  // 폼에서 .name으로 대상을 찾아들어가는구나 ㅇㅋㅇㅋ
+  // gender도 밸류로 인해 자연스레 체크까지 되네 ㅇㅋㅇㅋ
+</script>
+
+            </tr>
+            <tr id="id_bbbb">
+              <td class="num">02</td>
+              <td class="id">id_</td>
+              <td class="tel">010-</td>
+              <td class="grade">0</td>
+              <td class="gender">f</td>
+              <td class="score">50</td>
+              <td>
+                <button type="button" name="button"
+                onclick="insertForm('id_bbbb')">수정</button>
+              </td>
+            </tr>
+<script>
+  function insertForm(self){
+    // console.log(document.getElementById(id).getElementsByClassName("id")[0].innerText);
+    console.log(document.querySelector("#"+self+">td.num").innerText); //td.num 식으로 지칭할수 있다!!!!!!!;;
+  }
+</script>
+
+
+<!-- 이건 백앤드 개발자의 영역 우리는 회원 1만 저런 매커니즘을 원한다~ 함수로 보여주기만 하면 ㅇㅋ
+근데 다음것도 완벽하게 적은건 아닌듯??-->
+
+    <!-- foreach( mem of memlist){
+      <tr>
+        <td>{mem.num}</td><td>{mem.id}</td><td>{mem.tel}</td>
+
+        <td><form name="{mem_id}_form" method="post">
+          <input type="hidden" name="num" value="{mem_num}">
+          <input type="hidden" name="id" value="{mem_id}">
+          <input type="hidden" name="tel" value="{mem_tel}">
+          <input type="hidden" name="grade" value="{mem_grade}">
+          <input type="hidden" name="gender" value="{mem_gender}">
+          <input type="hidden" name="score" value="{mem_score}">
+        <button type="button" name="button" onclick=" insertForm2(this.form)">수정</button></td>
+      </tr>
+    } -->
+
+    <!-- 그러니까 다음처럼 내가 일일이 바꾸지 않아도 회원 1 것만 백앤드 개발자에게 보여주면 알아서 해준대 -->
+
+            <tr>
+              <td>03</td>
+              <td>id_cccc</td>
+              <td>010-3333</td>
+              <td>0</td>
+              <td>f</td>
+              <td>30</td>
+              <td><form name="id_aaaa_form" method="post">
+                <input type="hidden" name="num" value="03">
+                <input type="hidden" name="id" value="id_cccc">
+                <input type="hidden" name="tel" value="010-3333">
+                <input type="hidden" name="grade" value="0">
+                <input type="hidden" name="gender" value="f">
+                <input type="hidden" name="score" value="30">
+              <button type="button" name="button" onclick=" insertForm2(this.form)">수정</button></td>
+              </form>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>id_dddd</td>
+              <td>010-4444</td>
+              <td>0</td>
+              <td>f</td>
+              <td>40</td>
+              <td><form name="id_aaaa_form" method="post">
+                <input type="hidden" name="num" value="04">
+                <input type="hidden" name="id" value="id_dddd">
+                <input type="hidden" name="tel" value="010-4444">
+                <input type="hidden" name="grade" value="0">
+                <input type="hidden" name="gender" value="f">
+                <input type="hidden" name="score" value="40">
+              <button type="button" name="button" onclick=" insertForm2(this.form)">수정</button></td>
+              </form>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>id_eeee</td>
+              <td>010-5555</td>
+              <td>0</td>
+              <td>m</td>
+              <td>50</td>
+              <td><form name="id_aaaa_form" method="post">
+                <input type="hidden" name="num" value="01">
+                <input type="hidden" name="id" value="id_eeee">
+                <input type="hidden" name="tel" value="010-5555">
+                <input type="hidden" name="grade" value="0">
+                <input type="hidden" name="gender" value="m">
+                <input type="hidden" name="score" value="50">
+              <button type="button" name="button" onclick=" insertForm2(this.form)">수정</button></td>
+              </form>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </main>
+
+  </body>
+</html>

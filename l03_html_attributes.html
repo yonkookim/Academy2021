@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML 속성 수업</title>
+  </head>
+  <body>
+    <h1>HTML Attributes</h1>
+    <ul>
+      <li>모든 요소는 속성을 가진다.</li>
+      <li>모든 요소는 id, class, title, style 속성을 가진다.</li>
+      <li>모든 속성은 요소의 시작태그에 작성한다.</li>
+      <li>속성의 규칙은 name="value" (웹 표준)
+        <br>
+         서버개발자는 'value' or value 로 표시하기도..</li>
+      <li>style은 html의 속성으로 css를 의미한다.</li>
+    </ul>
+    <hr>
+    <h2>a: 하이퍼링크, 링크태그, anchor태그, 하이퍼텍스트</h2>
+    <ol>
+        <li>    <a href="naver.com">네이버</a></li>
+        <!-- 위 처럼 작성하면
+      상대경로로 우리의 프로젝트에서 naver를 찾는것 -->
+      <li><a href="http://naver.com">네이버</a></li>
+      <li>a태그의 속성 href는 HyperText Reference의 줄임말
+        <br>
+      value로 url을 갖는다.</li>
+      <li>예) a href="url" 이때 링크된 url주소로 전송된다.</li>
+      <li>방문하지 않은 링크는 밑줄과 파란색
+      <br>
+          방문한 링크는 밑줄과 보라색
+      <br>
+          활성 링크는 미줄과 빨간 </li>
+      <li>a태그의 속성 target의 기본(default)설정이 존재한다."_self"
+      <br>_self는 클릭한 웹과 동일한 창/탭에서 문서를 연다.
+      <br>_blank는 새창이나 새 탭에 문서를 연다.
+      <br><a href="http://naver.com" target="_blank">새탭 네이버</a></li>
+      <li>
+        <!-- style은 요소를 꾸미는 역할 -->
+        <p style="color:blue; text-decoration:underline;"
+        onmousedown="this.style.color='red'; window.location.href='http://naver.com'"
+        onmouseup="this.style.color='blue';">a 태그 흉내내기</p>
+        <!-- 흉내내기에서 mousedown시 href를 강제로 바꿔주는 속성을 넣어줬다. -->
+      </li>
+    </ol>
+  </body>
+</html>

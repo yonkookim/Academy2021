@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Window (BOM)</title>
+  </head>
+  <body>
+    <!-- 자바스크립트 언어는 순차적 X 전체를 먼저 인식후 실행은 그후 수행 -->
+    <main>
+      <h1>Window (BOM)객체는 브라우저에서 열린 창</h1>
+      <p>script에서 this로 취급되는(??) window는 최상위 객체다.</p>
+      <!-- script구문에서 어떤 이벤트, 태그 이하에서 this를 쓰지 않고
+      그 맨 앞에서 뜬금없이 this를 적으면??? 그것이 window를 지칭한다는 말 -->
+       <br> window.document로 document는 window 하위객체이고 이때 window는 생략가능하다.
+       <br> window는 브라우저의 모든 정보를 확인할 수 있는 Brower Object Model이다.
+      <h2>새창 띄우기</h2>
+      <ul>
+        <li>window.open(url, name, specs, replace) : 새 브라우저 or 새 창을 연다
+          <button type="button" onclick="openWindow()">windowOpenTest</button> </li>
+          <br>
+          <br>
+        <li>windowObject.resizeBy(width, height) : 창의 크기를 현재 크기보다 더 크게 조정하는 내장함수.</li>
+          <button type="button" onclick="testWindowResizeBy()">windowResizeBy(600,600)</button>
+          <br>
+          <br>
+        <li>windowObject.resizeTo(width, height) : 창의 크기를 지정된 너비와 높이로 조정하는 내장함수
+          <button type="button" onclick="testWindowResizeTo()">windowResizeTo(600,600)</button></li>
+          <br>
+          <br>
+        <li>test : 입력받은 크기로 testWindow 크기 조정
+          <form name="windowResize" action="index.html" method="post">
+            <br> 가로: <input type="text" name="winWidth" value="500">
+            <br> 세로: <input type="text" name="winHeight" value="600">
+            <br> <button type="button" onclick="testResize()" name="button">변경</button>
+
+            <!-- 다음거 해보자 하시더니 강사 계속 해매시는중 걍 주석으로 남김..-->
+            <!-- <br> <button type="button" onclick="testMove(winMove.moveX.value, winMove.moveY.value)" name="button">변경</button> -->
+            <!-- var testWindow;
+            function testMove(mX, mY){
+              testWindow.moveTo(mX, mY); -->
+
+              <!-- 지금 바로 위 주석 쓴것들 말고 갑자기 아~ 하면서 찾은 방법은 다음처럼
+              <button type="button" onclick="testWindow.moveTo(winMove.moveX.value, winMove.moveY.value)" name="button">변경</button>
+              이것만 써도 함수 지정은 필요 없다고 하는데? 뭐하시는건가.. 모르겠는데 나중에 혼자 해보자.. -->
+            }
+
+          </form>
+      </li>
+        <li>moveBy(x,y) : 현재 위치를 기준으로 창을 이동시키는 내장함수</li>
+        <br>
+        <br>
+        <li>moveTo(x,y) : 창을 지정 위치로 이동시키는 내장함수</li>
+        <br>
+        <br>
+        <li>test : 입력받은 크기로 testWindow 위치조정</li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h2>함수를 주시적으로 호출하기</h2>
+      <ul>
+        <li>setInterval(function,milliseconds): 함수를 지정 간격(밀리초)으로 호출한다.</li>
+        <li>clearInterval(intervalObject): 인터벌 함수의 타이머를 초기화</li>
+        <li><button type="button" onclick="setInt()">1초마다 숫자증가</button>
+          ++num : <span id=intervalNum>0</span>
+            <button type="button" onclick="clrInt()">stop</button>
+        </li>
+
+
+        <li><button type="button">시간보기</button>
+          시간 : <b id="interClock"></b>
+          <button type="button">stop</button>
+
+          <!-- 이걸 버튼에 따라 조작되게 만들어보라는 ==== 숙제==== -->
+        </li>
+
+        <h2>함수를 특정 시간에 호출</h2>
+        <ul>
+          <li>setTimeOut(function,milliseconds) : 지정된 시간(밀리초)에
+              함수를 한번 호출함.
+          </li>
+          <br>
+          <br>
+          <li>clearTimeout(timeOutObject) : 지정된 시간에 함수를 호출하기 전에 멈추는 함수</li>
+          <br>
+          <br>
+          <li> <button type="button"
+            onclick="myFunction()">2초뒤 경고창</button> </li>
+          <li> <button type="button"
+            onclick="myStopFunction()">2초뒤 경고창 out</button> </li>
+
+      </ul>
+
+
+      <h2>브라우저의 크기와 위치 정보(수정불가)</h2>
+      <ul>
+        <li>screenX, screenY(screenLeft, screenTop) : 브라우저의 x, y좌표</li>
+        <li>outerWidth, outerHeight : 모든 인터페이스 요소를 포함한 브라우저의 너비와 높이</li>
+        <li>innerWidth, innerHeight : 스크롤 막대를 포함한 창의 크기(뷰포트)</li>
+      </ul>
+
+
+      <h2>브라우저의 방문 기록 history</h2>
+        <p>window.history는 사용자가 방문한 url을 포함한다.</p>
+        <ul>
+          <li>history.length 히스토리 목록에 url수 *max:50이며 읽기전용이다.</li>
+          <br>
+          <li>history.back() : 히스토리 목록에서 이전 url을 로드. 즉, 뒤로가기</li>
+          <br>
+          <li>history.forward() : 히스토리 목록에서 다음 url을 로드. 즉, 앞으로 가기</li>
+          <br>
+          <li>history.go(num) : 특정 기록목록에 url 로드</li>
+        </ul>
+        <br>
+        <br>
+
+      <h2>위치 객체 location</h2>
+      <p>window.location은 url 정보가 포함되어 있다.</p>
+      <ul>
+        <li>location.href : 현재 페이지의 url 전체를 반환하고 특정 페이지로 이동할 수 있다.</li>
+        <br>
+        <li>location.hostname : 현재 url의 호스트 이름을 반환한다.</li>
+        <br>
+        <li>location.reload() : 현재 문서를 새로고침</li>
+      </ul>
+
+
+
+<script>
+// 대문자로 시작하는 이름의 ()는 클래스의 생성자
+// 소문자로 시작하는 이름의 ()는 함수
+// 즉, Date는 객체지향 언어에서 클래스라 부르는 객체.
+// 클래스가 객체로 생성되려면 생성자라는 클래스와 동일한 이름의 함수를 호출
+// 이때 앞에 new ClassName();  이는 클래스로 객체생성
+// 객체는 출력될 수 있는데 이때 .toString()함수 (문자열 반환 함수)가 생략될 수 있다.
+// document.getElementById("interClock").innerText=new Date().toString();
+var myVar;
+function myFunction(){
+  myVar = setTimeout(function(){alert("hello");}, 2000);
+}
+function myStopFunction(){
+  clearTimeout(myVar);
+}
+// 아 결국 변수의 활용으로 대상화를 해야 다음 클리어함수에서 적용가능하구나.. 이제 느낌오는데
+
+
+
+
+
+
+
+function interClock(){
+  var date=new Date();
+  var time= date.toLocaleTimeString();
+  document.getElementById("interClock").innerText=time;
+}
+interClock();
+window.setInterval(interClock, 1000);
+
+
+
+
+// 시간표시가 움직이게 하려는 나의 잘못된 시도
+// document.getElementById("interClock").innerText=new Date().toLocaleTimeString();
+// var interNumDom2=document.getElementById("interClock");
+//   var intervalObject2;
+// function incrNum2(){
+//   interNumDom2.innerText= ++num;
+// }
+// function setInt(){
+//   intervalObject2=setInterval(incrNum2,1000);
+// }
+
+
+
+
+var interNumDom=document.getElementById("intervalNum");
+  var num=0;
+  var intervalObject;
+function incrNum(){
+  interNumDom.innerText= ++num;
+    // setInterval(incrNum,1000); 처음엔 이렇게 해봤다가 재함수(무한반복)에 빠지는 오류를 범함.
+}
+function setInt(){
+  intervalObject=setInterval(incrNum,1000);
+}
+function clrInt(){
+  window.clearInterval(intervalObject); // window.clearInterval은 윈도우에 내장된 함수인건가
+}
+</script>
+      </ul>
+    </main>
+
+
+
+
+<script>
+      var testWindow;
+      function openWindow(){
+        testWindow=window.open("","test","width=200, height=200");
+        testWindow.moveBy(200,200);
+      }
+      // open(생략가능)된 새 윈도우 창을 대상화 하기 위해 변수(testWindow)의 값으로 지정하여
+      // 그 지정된 변수를 다음의 리사이즈 함수에서 적용할 대상으로 활용하는것
+
+      // 이 과정에서 resizeto, resizeby등은 기존에 존재하는 함수인가? 응 내장함수래
+      function testWindowResizeBy(){
+        testWindow.resizeBy(600, 600);
+      }
+      // 변수.함수() 는 변수에 함수를 적용하는 코드문법이네 document... 등과는 좀 다르구만
+      function testWindowResizeTo(){
+        testWindow.resizeTo(600, 600);
+      }
+      function testResize(){
+         // form의 name은 id와 동일하다
+         // document.forms.form'Name = document.getElementById("form의 Id")
+         // form안에 input의 name은 해당 form안에서 유입(호출?)해야한다.
+         // document.forms = document.getElementsByTagName("form")
+         // document.forms.form'Name.inputName = document.getElementById("inputId")
+        // console.log(document.forms.windowResize.winWidth.value); 이건 무엇??
+        var resizeForm= document.forms.windowResize;
+
+        // 위 resizeForm 변수를 지정해주는 이유는 다음에 이 경로가 반복해서 쓰일때 간단히 적자는 의미?
+        // 자식 태그에서 부모 form태그를 불러올때는 부모 form'Name으로 바로 가능
+
+        var winWidth= resizeForm.winWidth.value;
+        var winHeight= resizeForm.winHeight.value;
+        testWindow.resizeTo(winWidth,winHeight);
+       }
+</script>
+  </body>
+</html>

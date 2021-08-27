@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body onmousemove="showEventInf(event,this)">
+    <h4>마우스 이벤트 발생시 생성되는 event 예제</h4>
+    <p id="moveEventInf" position="absolute">안녕하세요</p>
+
+<script>
+//event는 이벤트 발생시 브라우저가 생성하는 객체
+//this는 이벤트가 발생한 해당요소(this는 최상위에서는 윈도우, html문서에서는 document, 특정요소에서는 해당element)
+function showEventInf(e,parameter2){
+var eventInf='';
+eventInf+="button num:"+e.button; // a=a+b <=> a+=b
+eventInf+="<br>buttons num:"+e.buttons;
+eventInf+="<br>button num:"+e.which;
+eventInf+="<br>page X:"+e.pageX+", Y:"+e.pageY;
+eventInf+="<br>client X:"+e.clientX+", Y:"+e.clientY;
+eventInf+="<br>screen X:"+e.screenX+", Y:"+e.screenY;
+eventInf+="<br>offset X:"+e.offsetX+", Y:"+e.offsetY;
+parameter2.innerHTML=eventInf;
+
+// 과제: p#moveEventInf에 eventInf를 출력하고 해당p요소가 해당 마우스 포인트의 움직임(이벤트)
+// 따라서 움직이게 한다.
+
+var eventInfDom= document.getElementById("moveEventInf");
+eventInfDom.innerHTML=eventInf;
+}
+
+function m(e){
+			var bx = document.getElementById("box");
+			bx.style.left = e.pageX;
+			bx.style.top = e.pageY;
+		}
+</script>
+  </body>
+</html>

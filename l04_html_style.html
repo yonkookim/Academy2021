@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/l04.css">
+    <!-- css/l04앞에 ./을 넣어주면 상대경로? 의의미라는 군? -->
+    <title>HTML style css(cascading style sheets)</title>
+    <style>
+      ul>li{
+        color:green;
+      }
+      ul>li:last-child{
+        color:orange;
+      }
+      ul>li:first-child{
+        color:black !important;
+      }
+      /* !imporptant는 우선순위를 무시하고 코드실현을 강제하는 강력한 코드 */
+    </style>
+  </head>
+  <body>
+    <h1>HTML style css(cascading style sheets)</h1>
+    <p>style css는 레이아웃, 색상, 텍스트 크기, 이미지, 배경, RWD등 HTML의 요소가
+    화면에 표시되는 모든 방식을 제공한다.</p>
+    <h2>css 구문(syntax)</h2>
+     <ul>
+      <li style="color:red";>selector{property:"value;"(X)}</li>
+       <li style="color:blue";>selector{property:value;}</li>
+       <!-- 이때 value값에 따음표를 붙이지 X -->
+       <!-- li*3 + tab 3번 반복적으로 가능 -->
+       <li>선택자{요소:값; 요소:값; 요소:값; ...}</li>
+       <li>예) h1 { color:red;
+                  <br>  background-color:gray;
+                  <br>  }
+       </li>
+       <li> tagname style="property:value; property:value"</li>
+     </ul>
+     <h2>HTML에 style 삽입하는 3가지 방법</h2>
+     <ol>
+       <li>외부 CSS : (head)(link rel="stylesheet" href="url") (/head)</li>
+       <li>내부 CSS : (head) (style) selector{property:value;} (/style)(/head)</li>
+       <li>인라인 CSS : (tagname style="property:value;")(/tagname)</li>
+       <li> 동일 요소에 서로다른 스타일이 적용되었을 때 우선순위 <br>
+         !important > 인라인 > 내부 > 외부 </li>
+         <!-- important가 절대적인것은 아니고 자식요소의 설정을 부모요소에서 뒤엎을 순X -->
+     </ol>
+  </body>
+</html>

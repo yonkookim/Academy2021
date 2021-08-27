@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML table</title>
+    <style>
+      #testTable{
+      width:100%;
+      border: 1px solid blue;
+      /* 기본테이블에서 테이블 탭에 보더를 준것과는 많이 비교되는 보더구만 */
+    }
+   #testTable td, #testTable th{
+      /* td의 실제위치 : testTable > tbody > tr > td 로 잡을 수 있지만
+      띄어쓰기로 내부의 모든 td */
+      border: 1px solid black;
+      border-collapse: collapse;
+     /* 보더들 간의 사이간격 없애는 이 코드는 왜 적용이 안되지?? 밑에서 선택자로
+     테이블 놓고 하니까 또 적용이 되네 하... */
+    }
+    #testTable tr{
+      background-color: gray;
+    }
+    table{
+      width:100%
+    }
+    table, th, td{
+      border: 1px solid black;
+      border-collapse: collapse;
+      border-top: 1px solid black;
+      padding:10px
+    }
+    th, td{
+      padding: 15px;
+      text-align: left;
+    }
+    tr:nth-child(even){
+      background-color:powderblue;
+    }
+    tr:nth-child(odd){
+      background-color:#fff;
+    }
+    th{
+      background-color:black;
+      color:white;
+    }
+    #tableStudy tbody tr:hover{
+      background-color:gray;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>HTML table</h1>
+    <!-- table>tr*4>td*3 + tab -->
+    <table style="width:100%" border="5px">
+      <caption><h2>기본 테이블</h2></caption>
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+      </tr>
+      <tr>
+        <td>길동</td>
+        <td>100</td>
+        <td>남</td>
+      </tr>
+      <tr>
+        <td>하니</td>
+        <td>50</td>
+        <td>여</td>
+      </tr>
+      <tr>
+        <td>철수</td>
+        <td>70</td>
+        <td>남</td>
+      </tr>
+    </table>
+    <!-- table#testTable>tr*4>td*3 + tab -->
+    <table id="testTable">
+      <!-- id란  document의 중복될 수 없는 선택자 -->
+      <caption><h2>시멘틱 테이블(thead, tbody, tfoot)</h2></caption>
+      <thead>
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>길동</td>
+        <td>100</td>
+        <td>남</td>
+      </tr>
+      <tr>
+        <td>하니</td>
+        <td>50</td>
+        <td>여</td>
+      </tr>
+      <tr>
+        <td>철수</td>
+        <td>70</td>
+        <td>남</td>
+      </tr>
+    </tbody>
+    </table>
+    <table id="tableStudy">
+      <caption>테이블과 관련된 태그들</caption>
+      <thead>
+        <tr>
+          <th>태그이름(tag)</th>
+          <th>정의(description)</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>table</td>
+          <td>데이터를 행과 열로 정리하는 표</td>
+        </tr>
+        <tr>
+          <td>tr</td>
+          <td>테이블의 행</td>
+        </tr>
+          <td>td</td>
+          <td>데이터 셀로 디폴트값은 좌로 정렬</td>
+        <tr>
+          <td>th</td>
+          <td>헤더 셀, 중앙 정렬되고 bold속성을 갖는다.</td>
+        </tr>
+        <tr>
+          <td>caption</td>
+          <td>테이블의 제목</td>
+        </tr>
+        <tr>
+          <td>colgroup</td>
+          <td>셀 전체의 스타일을 지정할 때 사용한다.</td>
+        </tr>
+        <tr>
+          <td>col</td>
+          <td>group의 셀을 지정할 수 있다.</td>
+        </tr>
+        <tr>
+          <td>thead</td>
+          <td>테이블 구획할 때 사용되며 헤더 행에 많이 사용된다.</td>
+        </tr>
+        <tr>
+          <td>tbody</td>
+          <td>테이블의 데이터가 출력되는 곳</td>
+        </tr>
+        <tr>
+          <td>tfoot</td>
+          <td>합계와 같은 테이블의 마지막을 구획할 때 사용</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
